@@ -1,0 +1,5 @@
+const { Pool } = require("pg");
+let pool;
+function db(){ if(!pool) pool=new Pool({connectionString:process.env.DATABASE_URL,ssl:{rejectUnauthorized:false}}); return pool; }
+async function init(){const p=db();await p.query(`CREATE TABLE IF NOT EXISTS bookings(id BIGSERIAL PRIMARY KEY,name TEXT NOT NULL,email TEXT NOT NULL,service TEXT NOT NULL,date DATE NOT NULL,notes TEXT,status TEXT DEFAULT 'pending',created_at TIMESTAMPTZ DEFAULT now());CREATE TABLE IF NOT EXISTS contacts(id BIGSERIAL PRIMARY KEY,name TEXT NOT NULL,email TEXT NOT NULL,phone TEXT,message TEXT NOT NULL,created_at TIMESTAMPTZ DEFAULT now());CREATE TABLE IF NOT EXISTS payments(id BIGSERIAL PRIMARY KEY,service TEXT NOT NULL,name TEXT NOT NULL,email TEXT NOT NULL,amount NUMERIC NOT NULL,reference TEXT NOT NULL,status TEXT DEFAULT 'pending',created_at TIMESTAMPTZ DEFAULT now());`);return p}
+module.exports={db,init};

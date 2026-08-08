@@ -1,0 +1,1 @@
+module.exports=async(req,res)=>res.status(200).json({currency:"NGN",bank:{name:"Stanbic Bank",accountNumber:"0085087474",accountName:"Oluwapelumi Ezekiel Kosoko"}});

@@ -1,0 +1,1 @@
+const {init}=require("./_db");module.exports=async(req,res)=>{try{await init();res.status(200).json({success:true,storage:"Neon PostgreSQL"})}catch(e){res.status(500).json({error:"Database unavailable"})}};

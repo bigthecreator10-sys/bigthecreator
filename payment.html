@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Make a Payment | BIG THE CReator</title>
+
+  <meta
+    name="description"
+    content="Make a secure bank transfer payment for BIG THE CReator services."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 25px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: #ffb000;
+    }
+
+    main {
+      padding: 60px 0 90px;
+    }
+
+    .intro {
+      margin-bottom: 35px;
+    }
+
+    .intro small {
+      color: #ffb000;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .intro h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1;
+      margin: 12px 0 15px;
+    }
+
+    .intro p {
+      color: #aaaab2;
+    }
+
+    .card {
+      background: #15151c;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 22px;
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .bank-details {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bank-row {
+      padding: 15px;
+      background: #0d0d12;
+      border-radius: 8px;
+    }
+
+    .bank-row small {
+      display: block;
+      color: #9999a2;
+      margin-bottom: 3px;
+    }
+
+    .bank-row strong {
+      font-size: 1.05rem;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    label {
+      font-size: .9rem;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0d0d12;
+      color: #ffffff;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #ffb000;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #ffb000;
+      color: #111111;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background: rgba(255,176,0,.12);
+      border: 1px solid rgba(255,176,0,.35);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #aaaab2;
+    }
+
+    .back:hover {
+      color: #ffb000;
+    }
+
+    footer {
+      padding: 25px 0;
+      text-align: center;
+      color: #777780;
+      background: #08080b;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <a href="/" class="logo">
+      BIG THE <span>CReator</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="intro">
+      <small>Payments</small>
+
+      <h1>Complete Your Payment</h1>
+
+      <p>
+        Select your service, make your bank transfer using the details
+        below, then submit your payment information for verification.
+      </p>
+    </div>
+
+    <div class="card">
+
+      <h2>Bank Transfer Details</h2>
+
+      <div class="bank-details">
+
+        <div class="bank-row">
+          <small>Bank</small>
+          <strong>Stanbic Bank</strong>
+        </div>
+
+        <div class="bank-row">
+          <small>Account Name</small>
+          <strong>Oluwapelumi Ezekiel Kosoko</strong>
+        </div>
+
+        <div class="bank-row">
+          <small>Account Number</small>
+          <strong>0085087474</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Submit Payment Details</h2>
+
+      <div class="message" id="message"></div>
+
+      <form id="paymentForm">
+
+        <div>
+          <label for="service">Service</label>
+
+          <select id="service" required>
+            <option value="">Select a service</option>
+            <option value="Event Hosting">Event Hosting</option>
+            <option value="Graphics Design">Graphics Design</option>
+            <option value="Branding">Branding</option>
+            <option value="Mobile Videography">Mobile Videography</option>
+            <option value="Fitness & Wellness Consultation">
+              Fitness & Wellness Consultation
+            </option>
+            <option value="Creative Consultation">
+              Creative Consultation
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="name">Full Name</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Your full name"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="email">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="amount">Amount Paid (₦)</label>
+          <input
+            id="amount"
+            type="number"
+            min="1"
+            step="1"
+            placeholder="Enter amount paid"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="reference">
+            Transfer Reference / Transaction ID
+          </label>
+
+          <input
+            id="reference"
+            type="text"
+            placeholder="Enter your bank transfer reference"
+            required
+          >
+        </div>
+
+        <button class="btn" id="submitBtn" type="submit">
+          Submit Payment
+        </button>
+
+      </form>
+
+    </div>
+
+    <a class="back" href="/">
+      ← Back to BIG THE CReator
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  © <span id="year"></span> BIG THE CReator. All rights reserved.
+</footer>
+
+<script>
+  const form = document.getElementById("paymentForm");
+  const message = document.getElementById("message");
+  const submitBtn = document.getElementById("submitBtn");
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    message.style.display = "none";
+
+    const payload = {
+      service: document.getElementById("service").value,
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      amount: Number(document.getElementById("amount").value),
+      reference: document.getElementById("reference").value.trim()
+    };
+
+    try {
+      const response = await fetch(
+        "/api/payment-submission",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || "Unable to submit payment."
+        );
+      }
+
+      message.textContent =
+        "Payment submitted successfully. Your payment is now pending verification.";
+
+      message.style.display = "block";
+
+      form.reset();
+
+    } catch (error) {
+
+      message.textContent =
+        error.message ||
+        "Something went wrong. Please try again.";
+
+      message.style.display = "block";
+
+    } finally {
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Payment";
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-const { init } = require(”./_db”);
+const { init } = require("../_db");
 
 module.exports = async (req, res) => {
 if (req.method !== “POST”) {
